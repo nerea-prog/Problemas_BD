@@ -6,7 +6,6 @@
     DATA: 12/12/2024
 ****************************************************** */
 
--- tabla compañia
 
 CREATE TABLE Companyia(
     nom VARCHAR (40) NOT NULL,
@@ -17,7 +16,6 @@ CREATE TABLE Companyia(
     filial_de VARCHAR (40) NOT NULL
 );
 
--- Tabla avion
 
 CREATE TABLE Avio(
     num_serie VARCHAR (30) NOT NULL,
@@ -27,7 +25,6 @@ CREATE TABLE Avio(
     companyia VARCHAR (40) NOT NULL
 );
 
--- Tabla aeropuerto
 
 
 CREATE TABLE Aeroport(
@@ -39,14 +36,12 @@ CREATE TABLE Aeroport(
     any_construccio YEAR (4)
 );
 
--- Tabla mostrador
 
 CREATE TABLE Mostrador (
     numero SMALLINT UNSIGNED,
     codi_aeroport VARCHAR (4) NOT NULL
 );
 
--- Tabla volar
 
 CREATE TABLE volar (
     seient TINYINT unsigned,
@@ -54,7 +49,6 @@ CREATE TABLE volar (
     vol VARCHAR (9) NOT NULL
 );
 
---Tabla personal
 
 CREATE TABLE Personal(
     num_empleat INT unsigned,
@@ -64,7 +58,6 @@ CREATE TABLE Personal(
     sou FLOAT NOT NULL
 );
 
---Tabla hostessa
 
 CREATE TABLE Hostessa(
     num_empleat INT unsigned
