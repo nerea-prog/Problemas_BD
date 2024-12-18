@@ -9,10 +9,10 @@
 -- tabla compañia
 
 CREATE TABLE Companyia(
-    nom varchar (40) not null,
+    nom VARCHAR (40) NOT NULL,
     IATA VARCHAR (6) NOT NULL,
-    CODE3 VARCHAR (6) NOT NULL,
-    ICAO VARCHAR (6) NOT NULL,
+    CODE3 VARCHAR (6),
+    ICAO VARCHAR (6),
     pais VARCHAR (40) NOT NULL,
     filial_de VARCHAR (40) NOT NULL
 );
@@ -35,54 +35,52 @@ CREATE TABLE Aeroport(
     pais VARCHAR (40) NOT NULL,
     ciutat VARCHAR (40) NOT NULL,
     IATA VARCHAR (4),
-    nom VARCHAR (55),
+    nom VARCHAR (55) NOT NULL,
     any_construccio YEAR (4)
 );
 
 -- Tabla mostrador
 
 CREATE TABLE Mostrador (
-    numero SMALLINT unsigned,
+    numero SMALLINT UNSIGNED,
     codi_aeroport VARCHAR (4) NOT NULL
 );
 
 -- Tabla volar
 
 CREATE TABLE volar (
-    seient TINYINT,
+    seient TINYINT unsigned,
     passatger VARCHAR (20) NOT NULL,
-    vol VARCHAR (9) NOT NULL,
-
+    vol VARCHAR (9) NOT NULL
 );
 
-
-
-------------------------------------------------------------------------------------------------------------------------------------------
-
+--Tabla personal
 
 CREATE TABLE Personal(
-    num_empleat INT,
-    nom VARCHAR NOT NULL,
-    cognom VARCHAR NOT NULL,
-    passaport VARCHAR NOT NULL,
+    num_empleat INT unsigned,
+    nom VARCHAR (25) NOT NULL,
+    cognom VARCHAR (35) NOT NULL,
+    passaport VARCHAR (20) NOT NULL,
     sou FLOAT NOT NULL
 );
 
+--Tabla hostessa
+
 CREATE TABLE Hostessa(
-    num_empleat INT
+    num_empleat INT unsigned
 );
 
 CREATE TABLE Pilot(
-    num_empleat INT,
-    hores_vol SMALLINT
+    num_empleat INT unsigned,
+    hores_vol SMALLINT unsigned
 );
 
 CREATE TABLE Passatger(
     passaport VARCHAR (20) NOT NULL,
     nom VARCHAR (30) NOT NULL,
-    cognom VARCHAR (50) NOT NULL,
-    adreca VARCHAR (30),
-    telefon INT,
+    cognom VARCHAR (50),
+    adreca VARCHAR (70),
+    telefon VARCHAR (9),
     email VARCHAR (40),
     data_naix DATE,
     genere CHAR (1)
@@ -92,10 +90,10 @@ CREATE TABLE Vol(
     codi VARCHAR (9) NOT NULL,
     aeroport_desti VARCHAR (4),
     data DATE NOT NULL,
-    durada SMALLINT,
+    durada SMALLINT unsigned NOT NULL,
     aeroport_origen VARCHAR (4),
     avio VARCHAR (30) NOT NULL,
-    hostessa INT,
-    pilot INT,
+    hostessa INT unsigned,
+    pilot INT unsigned,
     descripcio VARCHAR (50)
 );
