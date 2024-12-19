@@ -5,7 +5,16 @@
     AUTORS: Lorena Peiró i Nerea Narvaez
     DATA: 12/12/2024
 ****************************************************** */
-
+DROP TABLE IF EXISTS Companyia;
+DROP TABLE IF EXISTS Personal;
+DROP TABLE IF EXISTS Hostessa;
+DROP TABLE IF EXISTS Pilot;
+DROP TABLE IF EXISTS Avio;
+DROP TABLE IF EXISTS Passatger;
+DROP TABLE IF EXISTS Aeroport;
+DROP TABLE IF EXISTS Mostrador;
+DROP TABLE IF EXISTS Vol;
+DROP TABLE IF EXISTS Volar;
 
 CREATE TABLE Companyia(
     nom VARCHAR (40) NOT NULL,
@@ -16,40 +25,6 @@ CREATE TABLE Companyia(
     filial_de VARCHAR (40) NOT NULL
 );
 
-
-CREATE TABLE Avio(
-    num_serie VARCHAR (30) NOT NULL,
-    tipus VARCHAR (10) NOT NULL,
-    fabricant VARCHAR (20) NOT NULL,
-    any_fabricacio YEAR (4),
-    companyia VARCHAR (40) NOT NULL
-);
-
-
-
-CREATE TABLE Aeroport(
-    codi VARCHAR (4) NOT NULL,
-    pais VARCHAR (40) NOT NULL,
-    ciutat VARCHAR (40) NOT NULL,
-    IATA VARCHAR (4),
-    nom VARCHAR (55) NOT NULL,
-    any_construccio YEAR (4)
-);
-
-
-CREATE TABLE Mostrador (
-    numero SMALLINT UNSIGNED,
-    codi_aeroport VARCHAR (4) NOT NULL
-);
-
-
-CREATE TABLE volar (
-    seient TINYINT unsigned,
-    passatger VARCHAR (20) NOT NULL,
-    vol VARCHAR (9) NOT NULL
-);
-
-
 CREATE TABLE Personal(
     num_empleat INT unsigned,
     nom VARCHAR (25) NOT NULL,
@@ -58,7 +33,6 @@ CREATE TABLE Personal(
     sou FLOAT NOT NULL
 );
 
-
 CREATE TABLE Hostessa(
     num_empleat INT unsigned
 );
@@ -66,6 +40,14 @@ CREATE TABLE Hostessa(
 CREATE TABLE Pilot(
     num_empleat INT unsigned,
     hores_vol SMALLINT unsigned
+);
+
+CREATE TABLE Avio(
+    num_serie VARCHAR (30) NOT NULL,
+    tipus VARCHAR (10) NOT NULL,
+    fabricant VARCHAR (20) NOT NULL,
+    any_fabricacio YEAR (4),
+    companyia VARCHAR (40) NOT NULL
 );
 
 CREATE TABLE Passatger(
@@ -79,6 +61,20 @@ CREATE TABLE Passatger(
     genere CHAR (1)
 );
 
+CREATE TABLE Aeroport(
+    codi VARCHAR (4) NOT NULL,
+    pais VARCHAR (40) NOT NULL,
+    ciutat VARCHAR (40) NOT NULL,
+    IATA VARCHAR (4),
+    nom VARCHAR (55) NOT NULL,
+    any_construccio YEAR (4)
+);
+
+CREATE TABLE Mostrador (
+    numero SMALLINT UNSIGNED,
+    codi_aeroport VARCHAR (4) NOT NULL
+);
+
 CREATE TABLE Vol(
     codi VARCHAR (9) NOT NULL,
     aeroport_desti VARCHAR (4),
@@ -89,4 +85,10 @@ CREATE TABLE Vol(
     hostessa INT unsigned,
     pilot INT unsigned,
     descripcio VARCHAR (50)
+);
+
+CREATE TABLE volar (
+    passatger VARCHAR (20) NOT NULL,
+    vol VARCHAR (9) NOT NULL,
+    seient TINYINT unsigned
 );
