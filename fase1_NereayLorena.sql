@@ -71,7 +71,7 @@ CREATE TABLE Aeroport(
 );
 
 CREATE TABLE Mostrador (
-    numero SMALLINT UNSIGNED,
+    numero SMALLINT unsigned,
     codi_aeroport VARCHAR (4) NOT NULL
 );
 
