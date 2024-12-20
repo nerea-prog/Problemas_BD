@@ -46,7 +46,7 @@ CREATE TABLE Avio(
     num_serie VARCHAR (30) NOT NULL,
     tipus VARCHAR (10) NOT NULL,
     fabricant VARCHAR (20) NOT NULL,
-    any_fabricacio YEAR (4),
+    any_fabricacio YEAR,
     companyia VARCHAR (40) NOT NULL
 );
 
@@ -67,7 +67,7 @@ CREATE TABLE Aeroport(
     ciutat VARCHAR (40) NOT NULL,
     IATA VARCHAR (4),
     nom VARCHAR (55) NOT NULL,
-    any_construccio YEAR (4)
+    any_construccio YEAR
 );
 
 CREATE TABLE Mostrador (
