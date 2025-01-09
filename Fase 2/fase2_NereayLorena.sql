@@ -43,9 +43,16 @@ ALTER TABLE volar ADD CONSTRAINT fk_volar_vol FOREIGN KEY (vol) REFERENCES vol(c
 
 ALTER TABLE volar ADD CONSTRAINT ch_volar_seient CHECK (seient >=1 and seient <=200);
 ALTER TABLE personal ADD CONSTRAINT unique_passaport UNIQUE (passaport);
-ALTER TABLE avio
+ALTER TABLE avio ADD CONSTRAINT ch_avio_tipus CHECK (tipus='COM-PAS' or tipus='JET' or tipus='CARGO');
+ALTER TABLE vol ADD CONSTRAINT ch_vol_descripcio CHECK (descripcio='ON-TIME' or descripcio='DELAYED' or descripcio='UNKNOWN');
+ALTER TABLE pilot ADD CONSTRAINT ch_pilot_hores_vol CHECK (hores_vol >=400);
+ALTER TABLE volar ADD CONSTRAINT unique_seient UNIQUE (vol, seient);
+ALTER TABLE vol ADD CONSTRAINT vol_durada CHECK (durada >= 10 and durada <= 1200);
+ALTER TABLE personal ADD CONSTRAINT personal_sou CHECK (sou >= 20000 );
+ALTER TABLE aeroport ADD CONSTRAINT unique_IATA UNIQUE (IATA);
 
-/*
+
+/* HECHO! LO MIRAMOS EL PROXIMO DIA :)
 2.3.- Restriccions textuals
 A banda de les claus primàries, foranes i d’obligatorietat, altres restriccions que el model ha de
 complir i que no s’han vist reflexades en el model anterior són:
@@ -59,29 +66,4 @@ complir i que no s’han vist reflexades en el model anterior són:
 hores)
 - El sou no pot ser negatiu. A més el sou mínim ha de ser de 20.000 dolars.
 - El codi IATA dels aeroports no es pot repetir
-*/
-
-
-
-
-/*
-Cal tenir presents les següents característiques:
-
-- En aquesta fase només pots fer servir la comanda ALTER TABLE amb la
-opció ADD CONSTRAINT, no serà vàlid cap lliurament que contigui create
-table, drop table o que faci servir ALTER TABLE amb modify o change.
-
-- Has de treballar sobre la solució de la fase 1 proposada pel professor
-
-- S’han de gestionar totes les restriccions de l’enunciat sobre claus
-primàries, claus foranes, restriccions check i restriccions unique
-
-- NO s’han de gestionar les restriccions de tipus not null donat que
-aquestes ja s’han treballat a la fase 1
-
-- Totes les restriccions han de tenir nom
-
-- El document que genereu s’importarà directament a MySQL amb la
-comanda source (o similar). NO es farà cap canvi, ni tan sols una coma.
-Per tant, cal que us assegureu que el document funciona correctament.
 */
