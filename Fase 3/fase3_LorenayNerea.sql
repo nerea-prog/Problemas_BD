@@ -7,7 +7,7 @@
 ****************************************************** */
 
 -- Pregunta 1
-select nom, icao from companyia
+SELECT nom, icao from companyia
 ORDER BY icao;
 
 -- Pregunta 2
@@ -21,10 +21,14 @@ AS aeroport FROM aeroport
 WHERE pais LIKE 'Spain' ORDER BY nom;
 
 -- Pregunta 4
-select 'No ho sé';
+SELECT nom, pais, LENGTH(nom) AS longitud FROM aeroport
+WHERE LENGTH(nom) BETWEEN 7 AND 9 AND nom like '%e%e%e'
+ORDER BY longitud DESC, pais ASC;
 
 -- Pregunta 5
-select 'No ho sé';
+SELECT num_serie FROM Avio WHERE fabricant LIKE 'Concorde' OR
+companyia LIKE 'Alitalia' AND any_fabricacio = 2008
+ORDER BY num_serie;
 
 -- Pregunta 6
 select 'No ho sé';
