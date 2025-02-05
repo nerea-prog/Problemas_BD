@@ -22,7 +22,7 @@ WHERE pais LIKE 'Spain' ORDER BY nom;
 
 -- Pregunta 4
 SELECT nom, pais, LENGTH(nom) AS longitud FROM aeroport
-WHERE LENGTH(nom) BETWEEN 7 AND 9 AND nom like '%e%e%e'
+WHERE LENGTH(nom) BETWEEN 7 AND 9 AND nom LIKE '%e%e%e'
 ORDER BY longitud DESC, pais ASC;
 
 -- Pregunta 5
@@ -31,7 +31,9 @@ companyia LIKE 'Alitalia' AND any_fabricacio = 2008
 ORDER BY num_serie;
 
 -- Pregunta 6
-select 'No ho sé';
+SELECT CONCAT(cognom, ', ',nom) AS nom_complet FROM Passatger
+WHERE nom_complet LIKE '%k%k'
+ORDER BY cognom ASC; --Me he quedado aqui fea :) falta por acabar
 
 -- Pregunta 7
 select 'No ho sé';
