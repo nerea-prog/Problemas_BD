@@ -22,21 +22,22 @@ WHERE pais LIKE 'Spain' ORDER BY nom;
 
 -- Pregunta 4
 SELECT nom, pais, CHAR_LENGTH(nom) AS longitud FROM aeroport
-WHERE LENGTH(nom) BETWEEN 7 AND 9 AND nom LIKE '%e%e%e'
+WHERE LENGTH(nom) BETWEEN 7 AND 9 AND nom LIKE '%e%e%e%'
 ORDER BY longitud DESC, pais ASC;
 
 -- Pregunta 5
-SELECT num_serie FROM Avio WHERE fabricant LIKE 'Concorde' OR
+SELECT num_serie, fabricant, companyia, any_fabricacio FROM Avio WHERE fabricant LIKE 'Concorde' AND any_fabricacio = 2008 OR
 companyia LIKE 'Alitalia' AND any_fabricacio = 2008
 ORDER BY num_serie;
 
 -- Pregunta 6
-SELECT CONCAT(cognom, ', ',nom) AS nom_complet FROM Passatger
-WHERE nom LIKE '%k%k' OR cognom LIKE '%K%K' AND adreca LIKE 'Barcelona'
+SELECT CONCAT(cognom, ', ',nom) AS nom_complet, adreca FROM passatger
+WHERE adreca LIKE '%Barcelona' AND (nom LIKE '%k%k%' OR cognom LIKE '%K%K%')
 ORDER BY cognom ASC;
 
 -- Pregunta 7
-SELECT fabricant FROM Avio WHERE any_fabricacio = 2000;
+SELECT DISTINCT fabricant FROM Avio WHERE any_fabricacio = 2000
+ORDER BY fabricant ASC;
 
 -- Pregunta 8
 select 'No ho sé';
