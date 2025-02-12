@@ -45,4 +45,5 @@ WHERE nom NOT LIKE '%a%' AND naixement BETWEEN '01/10/2003' AND '31/10/2003'
 ORDER BY naixement DESC, cognom ASC;
 
 -- Pregunta 9
-select 'No ho sé';
+SELECT nom, cognom, telefon, data_naix FROM Passatger
+WHERE 
