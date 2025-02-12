@@ -36,7 +36,7 @@ WHERE nom LIKE '%k%k' OR cognom LIKE '%K%K' AND adreca LIKE 'Barcelona'
 ORDER BY cognom ASC;
 
 -- Pregunta 7
-select 'No ho sé';
+SELECT fabricant FROM Avio WHERE any_fabricacio = 2000;
 
 -- Pregunta 8
 select 'No ho sé';
