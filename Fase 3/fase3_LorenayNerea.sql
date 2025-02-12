@@ -40,7 +40,9 @@ SELECT DISTINCT fabricant FROM Avio WHERE any_fabricacio = 2000
 ORDER BY fabricant ASC;
 
 -- Pregunta 8
-select 'No ho sé';
+SELECT cognom, nom, DATE_FORMAT(data_naix, "%d/%m/%Y (%W)") AS naixement FROM Passatger
+WHERE nom NOT LIKE '%a%' AND naixement BETWEEN '01/10/2003' AND '31/10/2003'
+ORDER BY naixement DESC, cognom ASC;
 
 -- Pregunta 9
 select 'No ho sé';
