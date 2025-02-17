@@ -41,10 +41,10 @@ ORDER BY fabricant ASC;
 
 -- Pregunta 8
 SELECT cognom, nom, DATE_FORMAT(data_naix, "%d/%m/%Y (%W)") AS naixement FROM Passatger
-WHERE nom NOT LIKE '%a%' AND naixement BETWEEN '01/10/2003' AND '31/10/2003'
-ORDER BY naixement DESC, cognom ASC;
+WHERE nom NOT LIKE '%a%' AND data_naix BETWEEN '2003/10/01' AND '2003/10/31	'
+ORDER BY data_naix DESC, cognom ASC;
 
 -- Pregunta 9
-SELECT nom, cognoms, telefon, data_naix FROM passatgers
+SELECT nom, cognom, telefon, data_naix FROM passatger
 WHERE (YEAR(CURDATE()) - YEAR(data_naix) IN (54, 55)) AND (telefon % 2 != 0) AND (adreca IS NULL)
 ORDER BY data_naix ASC, nom ASC;
