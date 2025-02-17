@@ -45,5 +45,6 @@ WHERE nom NOT LIKE '%a%' AND naixement BETWEEN '01/10/2003' AND '31/10/2003'
 ORDER BY naixement DESC, cognom ASC;
 
 -- Pregunta 9
-SELECT nom, cognom, telefon, data_naix FROM Passatger
-WHERE 
+SELECT nom, cognoms, telefon, data_naix FROM passatgers
+WHERE (YEAR(CURDATE()) - YEAR(data_naix) IN (54, 55)) AND (telefon % 2 != 0) AND (adreca IS NULL)
+ORDER BY data_naix ASC, nom ASC;
