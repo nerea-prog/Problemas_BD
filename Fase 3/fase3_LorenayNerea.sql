@@ -3,7 +3,7 @@
     CFGS Desenvolupament d'Aplicacions Multiplataforma
     Mòdul: 0484 Bases de dades. 
     AUTORS: Nerea Narváez y Lorena Peiró
-    DATA: ________________
+    DATA:16/02/2025
 ****************************************************** */
 
 -- Pregunta 1
