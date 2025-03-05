@@ -24,7 +24,16 @@ AND any_fabricacio < 2000
 ORDER BY any_fabricacio DESC, compania ASC, num_serie ASC;
 
 --Pregunta 3
-
+SELECT v.codi, v.data, CONCAT(pe.cognom, ', ', pe.nom, ' (', pi.hores_Vol, ')') AS pilot, a.companyia
+FROM vol v
+JOIN personal pe ON v.pilot = pe.num_empleat
+JOIN pilot pi ON pe.num_empleat = pi.num_empleat
+JOIN avio a ON v.avio = a.num_serie
+WHERE v.data BETWEEN '2024-02-01' AND '2024-02-29'
+  AND pi.hores_Vol > 7000
+  AND pe.sou > 53000
+  AND v.descripcio LIKE '%DELAYED%'
+ORDER BY a.companyia, v.data, v.codi;
 
 --Pregunta 4
  SELECT CONCAT(p.cognom, ', ', p.nom) AS passatger
