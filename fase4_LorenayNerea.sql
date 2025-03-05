@@ -16,6 +16,12 @@ WHERE a.codi = v.aeroport_origen
 	ORDER BY ciutat, DATA;
 
 --Pregunta 2
+SELECT a.any_fabricacio AS any, c.nom AS compania, a.num_serie, a.tipus
+FROM  avio a, companyia c
+WHERE a.companyia = c.nom
+AND pais LIKE '%spain%'
+AND any_fabricacio < 2000
+ORDER BY any_fabricacio DESC, compania ASC, num_serie ASC;
 
 --Pregunta 3
 
