@@ -7,7 +7,7 @@
 ****************************************************** */
 
 --Pregunta 1
-SELECT a.nom AS ciutat, a.ciutat AS aeroport, v.data, v.codi
+SELECT a.ciutat AS ciutat, a.nom AS aeroport, v.data, v.codi
 FROM aeroport a, vol v
 WHERE a.codi = v.aeroport_origen
   AND durada < 40
@@ -58,25 +58,30 @@ WHERE v.data BETWEEN '2024-01-01' AND '2024-12-31'
 ORDER BY v.codi;
 
 --Pregunta 6
--- PENDIENTE
-SELECT 
-    c1.nom, 
-    c2.filial_de,
-    CONCAT(per2.cognom, ', ', per2.nom) AS pilot,
-    CONCAT(per1.cognom, ', ', per1.nom) AS hostessa
-FROM companyia c1
-JOIN companyia c2 ON c1.nom = c2.filial_de
-JOIN avio a ON c1.nom = a.companyia
+-- PENDIENTE (esta no hay manera)
+SELECT c2.nom, c2.filial_de, CONCAT(per2.cognom, ', ', per2.nom) AS pilot, CONCAT(per1.cognom, ', ', per1.nom) AS hostessa
+FROM companyia c2
+JOIN companyia c1 ON c2.filial_de = c1.nom
+JOIN avio a ON c2.nom = a.companyia
 JOIN vol v ON a.num_serie = v.avio
 JOIN hostessa h ON v.hostessa = h.num_empleat
 JOIN pilot p ON v.pilot = p.num_empleat
 JOIN personal per1 ON h.num_empleat = per1.num_empleat
 JOIN personal per2 ON p.num_empleat = per2.num_empleat
 WHERE a.any_fabricacio = 2008 
-AND c2.filial_de IS NOT NULL 
 ORDER BY per2.cognom, per1.cognom;
 
 --Pregunta 7
+SELECT c.nom, COALESCE(c.filial_de, '-') AS mare
+FROM companyia c
+ORDER BY c.nom;
 
 --Pregunta 8
-GILI
+SELECT a.nom, a.pais, COALESCE(v.codi, 'Sense vols') AS vol
+FROM aeroport a
+LEFT JOIN vol v ON a.codi = v.aeroport_origen 
+    AND v.durada > 200 
+    AND v.data BETWEEN '2024-01-01' AND '2024-01-10'
+WHERE a.nom LIKE '%z%' 
+AND LENGTH(a.pais) < 15
+ORDER BY a.pais, a.nom;
