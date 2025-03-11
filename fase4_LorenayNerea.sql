@@ -83,5 +83,5 @@ LEFT JOIN vol v ON a.codi = v.aeroport_origen
     AND v.durada > 200 
     AND v.data BETWEEN '2024-01-01' AND '2024-01-10'
 WHERE a.nom LIKE '%z%' 
-AND LENGTH(a.pais) < 15
+  AND LENGTH(a.pais) < 15
 ORDER BY a.pais, a.nom;
