@@ -7,13 +7,13 @@
 ****************************************************** */
 
 --Pregunta 1
-SELECT a.nom AS ciutat, a.ciutat AS aeroport, v.data, v.codi
+SELECT a.ciutat AS ciutat, a.nom AS aeroport, v.data, v.codi
 FROM aeroport a, vol v
 WHERE a.codi = v.aeroport_origen
   AND durada < 40
   AND DATA BETWEEN '2024/02/01' AND '2024/02/29'
   AND descripcio LIKE '%DELAYED%'
-ORDER BY ciutat, DATA;
+ORDER BY ciutat, data;
 
 --Pregunta 2
 SELECT a.any_fabricacio AS any, c.nom AS compania, a.num_serie, a.tipus
@@ -48,34 +48,22 @@ WHERE p.adreca LIKE '%madrid%' AND v.data = '2023-12-25'
 ORDER BY p.cognom;
 
 --Pregunta 5
-SELECT v.codi, CONCAT(a1.nom, ' ','(',a1.ciutat,')') AS origen, CONCAT(a2.nom, ' ','(',a2.ciutat,')') AS desti
+SELECT v.codi, CONCAT(v.aeroport_origen, ' ','(',a1.ciutat,')') AS origen, CONCAT(vol.aeroport_desti, ' ','(',a2.ciutat,')') AS desti
 FROM vol v
-JOIN aeroport a1 ON v.aeroport_origen = a1.codi
-JOIN aeroport a2 ON v.aeroport_desti = a2.codi
+JOIN aeroport a1 ON a1.codi = v.aeroport_origen
+JOIN aeroport a2 ON a2.codi = v.aeroport_desti
 WHERE v.data BETWEEN '2024-01-01' AND '2024-12-31'
 	AND v.durada > 160
-	AND (a1.nom LIKE '__o%' AND a2.nom LIKE '__o%')
+	AND (a1.ciutat LIKE '__o%' AND a2.ciutat LIKE '__o%')
 ORDER BY v.codi;
 
 --Pregunta 6
--- PENDIENTE
-SELECT 
-    c1.nom, 
-    c2.filial_de,
-    CONCAT(per2.cognom, ', ', per2.nom) AS pilot,
-    CONCAT(per1.cognom, ', ', per1.nom) AS hostessa
-FROM companyia c1
-JOIN companyia c2 ON c1.nom = c2.filial_de
-JOIN avio a ON c1.nom = a.companyia
-JOIN vol v ON a.num_serie = v.avio
-JOIN hostessa h ON v.hostessa = h.num_empleat
-JOIN pilot p ON v.pilot = p.num_empleat
-JOIN personal per1 ON h.num_empleat = per1.num_empleat
-JOIN personal per2 ON p.num_empleat = per2.num_empleat
-WHERE a.any_fabricacio = 2008 
-AND c2.filial_de IS NOT NULL 
-ORDER BY per2.cognom, per1.cognom;
-
---Pregunta 7
-
---Pregunta 8
+SELECT c.nom, c.filial_de, CONCAT(pilot.cognom, ', ', pilot.nom) AS pilot, CONCAT(hostessa.cognom, ', ', hostessa.nom) AS hostessa
+FROM vol v
+JOIN avio a ON v.avio = a.num_serie
+JOIN companyia c ON a.companyia = companyia.nom
+JOIN personal per1 ON v.pilot = pilot.num_empleat
+JOIN personal per2 ON v.hostessa = hostessa.num_empleat
+WHERE a.any_fabricacio = 2008
+  AND c.filial_de IS NOT NULL  
+ORDER BY pilot.cognom, hostessa.cognom;
