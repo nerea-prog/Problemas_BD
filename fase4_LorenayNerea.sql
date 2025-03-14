@@ -67,3 +67,8 @@ JOIN personal per2 ON v.hostessa = hostessa.num_empleat
 WHERE a.any_fabricacio = 2008
   AND c.filial_de IS NOT NULL  
 ORDER BY pilot.cognom, hostessa.cognom;
+
+--Pregunta 7
+SELECT c.nom, COALESCE(c.filial_de, '-') AS mare
+FROM companyia c
+ORDER BY c.nom;
