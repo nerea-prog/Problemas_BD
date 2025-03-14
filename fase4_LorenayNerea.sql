@@ -6,7 +6,7 @@
     DATA: 20/02/2025
 ****************************************************** */
 
---Pregunta 1
+-- Pregunta 1
 SELECT a.ciutat AS ciutat, a.nom AS aeroport, v.data, v.codi
 FROM aeroport a, vol v
 WHERE a.codi = v.aeroport_origen
@@ -15,15 +15,15 @@ WHERE a.codi = v.aeroport_origen
   AND descripcio LIKE '%DELAYED%'
 ORDER BY ciutat, data;
 
---Pregunta 2
-SELECT a.any_fabricacio AS any, c.nom AS compania, a.num_serie, a.tipus
+-- Pregunta 2
+SELECT a.any_fabricacio AS any, c.nom AS companyia, a.num_serie, a.tipus
 FROM  avio a, companyia c
 WHERE a.companyia = c.nom
   AND pais LIKE '%spain%'
   AND any_fabricacio < 2000
-ORDER BY any_fabricacio DESC, compania ASC, num_serie ASC;
+ORDER BY any_fabricacio DESC, companyia ASC, num_serie ASC;
 
---Pregunta 3
+-- Pregunta 3
 SELECT v.codi, v.data, CONCAT(pe.cognom, ', ', pe.nom, ' (', pi.hores_Vol, ')') AS pilot, a.companyia
 FROM vol v
 JOIN personal pe ON v.pilot = pe.num_empleat
@@ -35,7 +35,7 @@ WHERE v.data BETWEEN '2024-02-01' AND '2024-02-29'
   AND v.descripcio LIKE '%DELAYED%'
 ORDER BY a.companyia, v.data, v.codi;
 
---Pregunta 4
+-- Pregunta 4
 SELECT CONCAT(p.cognom, ', ', p.nom) AS passatger, CONCAT(pe.cognom, ', ', pe.nom) AS hostessa, v.aeroport_origen, v.aeroport_desti, v.durada
 FROM passatger p
 JOIN volar vl ON p.passaport = vl.passatger
@@ -47,8 +47,8 @@ JOIN aeroport a2 ON v.aeroport_origen = a2.codi
 WHERE p.adreca LIKE '%madrid%' AND v.data = '2023-12-25'
 ORDER BY p.cognom;
 
---Pregunta 5
-SELECT v.codi, CONCAT(v.aeroport_origen, ' ','(',a1.ciutat,')') AS origen, CONCAT(vol.aeroport_desti, ' ','(',a2.ciutat,')') AS desti
+-- Pregunta 5
+SELECT v.codi, CONCAT(v.aeroport_origen, ' ','(',a1.ciutat,')') AS origen, CONCAT(v.aeroport_desti, ' ','(',a2.ciutat,')') AS desti
 FROM vol v
 JOIN aeroport a1 ON a1.codi = v.aeroport_origen
 JOIN aeroport a2 ON a2.codi = v.aeroport_desti
@@ -57,18 +57,18 @@ WHERE v.data BETWEEN '2024-01-01' AND '2024-12-31'
 	AND (a1.ciutat LIKE '__o%' AND a2.ciutat LIKE '__o%')
 ORDER BY v.codi;
 
---Pregunta 6
-SELECT c.nom, c.filial_de, CONCAT(pilot.cognom, ', ', pilot.nom) AS pilot, CONCAT(hostessa.cognom, ', ', hostessa.nom) AS hostessa
+-- Pregunta 6
+SELECT c.nom, c.filial_de, CONCAT(per1.cognom, ', ', per1.nom) AS pilot, CONCAT(per2.cognom, ', ', per2.nom) AS hostessa
 FROM vol v
 JOIN avio a ON v.avio = a.num_serie
-JOIN companyia c ON a.companyia = companyia.nom
-JOIN personal per1 ON v.pilot = pilot.num_empleat
-JOIN personal per2 ON v.hostessa = hostessa.num_empleat
+JOIN companyia c ON a.companyia = c.nom
+JOIN personal per1 ON v.pilot = per1.num_empleat
+JOIN personal per2 ON v.hostessa = per2.num_empleat
 WHERE a.any_fabricacio = 2008
   AND c.filial_de IS NOT NULL  
-ORDER BY pilot.cognom, hostessa.cognom;
+ORDER BY per1.cognom, per2.cognom;
 
---Pregunta 7
+-- Pregunta 7
 SELECT c.nom, COALESCE(c.filial_de, '-') AS mare
 FROM companyia c
 ORDER BY c.nom;
