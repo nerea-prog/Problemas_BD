@@ -79,4 +79,3 @@ ORDER BY per2.cognom, per1.cognom;
 --Pregunta 7
 
 --Pregunta 8
-GILI
